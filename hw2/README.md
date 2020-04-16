@@ -15,6 +15,7 @@ Experiment:
 2. Write a driver script which keeps forking new processes with the standard test program and measure the CPU utility at the same time. 
 3. Get the multiprogramming level curve for different types of EC2 instances. 
 4. Compared the spot prices of EC2 instances and their multiprogramming levels. Conclude which one is attractive at a reasonable price. 
+5. Using python libraries to parallel matrix multiplication, to see how speedup is related to increased threads.
 
 Timeline:
 
