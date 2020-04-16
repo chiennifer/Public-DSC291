@@ -6,7 +6,8 @@ Independent Variables: Different EC2 instances based on memory capacity, computi
 
 Measures: CPU Utility, Memory Usage, Latency, Speedup vs Number of processes
 
-Hypothesis: Multiprogramming ability can be measured by the number of processes when CPU utility reaches the maximum point. When the number of processes does not exceed this point, the CPU is not fully used. After this point, cache and memory are not large enough to support all processes and they have to frequently require disk I/O, which leads to the decrease of CPU utilization called "Thrashing". 
+Hypothesis: 
+Multiprogramming ability can be measured by the number of processes when CPU utility reaches the maximum point. When the number of processes does not exceed this point, the CPU is not fully used. After this point, cache and memory are not large enough to support all processes and they have to frequently require disk I/O, which leads to the decrease of CPU utilization called "Thrashing". 
 
 Due to various cache and memory configuration of different types of EC2 instances, they have different multiprogramming levels. We want to check the maximum multiprogramming ability of different AWS EC2 instances.
 
