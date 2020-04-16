@@ -17,6 +17,7 @@ Experiment:
 4. Compared the spot prices of EC2 instances and their multiprogramming levels. Conclude which one is attractive at a reasonable price. 
 
 Timeline:
+
 4/16 8pm : Get scripts and code working for (i) matrix multiplication, (ii) Forking new processes, (iii) measuring CPU utility + meeting for what experiments to run 
 
 4/18 : Data Science (experiments + visualization) deadline
