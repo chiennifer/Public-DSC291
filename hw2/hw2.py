@@ -77,11 +77,11 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    # N = np.power(2*np.ones(13), range(13))
-    # num_proc = [1, 2, 4, 8, 16, 20]
+    N = np.power(2*np.ones(13), range(13))
+    num_proc = [1, 2, 4, 8, 16, 20]
 
-    N = [1,2,4,8,16,32,64]
-    num_proc = [1, 2, 4, 8]
+    # N = [1,2,4,8,16,32,64]
+    # num_proc = [1, 2, 4, 8]
     num_it = 10
     fieldnames = ['size_arr', 'num_proc',
                   'time_avg', 'time_std',
@@ -100,4 +100,5 @@ if __name__=="__main__":
                 all_cpu.append(cpu)
                 all_time.append(times)
     np.savez_compressed('raw_data', cpu = all_cpu, times = all_time)
+    print('Finished')
 
