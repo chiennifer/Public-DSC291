@@ -73,22 +73,31 @@ def run(N, num_proc, num_it = 1):
     return {'time_avg' : np.mean(time_arr),
             'time_std' : np.std(time_arr),
             'cpu_ut_avg' : np.mean(cpu_arr),
-            'cpu_ut_std' : np.std(cpu_arr)}
+            'cpu_ut_std' : np.std(cpu_arr)}, cpu_arr, time_arr
 
 
 if __name__=="__main__":
-    N = [3, 5, 10, 100, 500, 1000]
-    num_proc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    num_it = 5
+    # N = np.power(2*np.ones(13), range(13))
+    # num_proc = [1, 2, 4, 8, 16, 20]
+
+    N = [1,2,4,8,16,32,64]
+    num_proc = [1, 2, 4, 8]
+    num_it = 10
     fieldnames = ['size_arr', 'num_proc',
                   'time_avg', 'time_std',
                   'cpu_ut_avg', 'cpu_ut_std']
+    all_cpu = []
+    all_time = []
     with open('stats.csv', 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for n in N:
             for proc in num_proc:
-                stats = run(n, proc, num_it)
+                stats, cpu, times = run(n, proc, num_it)
                 stats['size_arr'] = n
                 stats['num_proc'] = proc
                 writer.writerow(stats)
+                all_cpu.append(cpu)
+                all_time.append(times)
+    np.savez_compressed('raw_data', cpu = all_cpu, times = all_time)
+
