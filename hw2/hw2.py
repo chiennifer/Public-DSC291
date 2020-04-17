@@ -92,6 +92,7 @@ if __name__=="__main__":
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
         for n in N:
+            n = int(n)
             for proc in num_proc:
                 stats, cpu, times = run(n, proc, num_it)
                 stats['size_arr'] = n
