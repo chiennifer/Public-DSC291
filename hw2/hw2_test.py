@@ -77,7 +77,7 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    N = np.power(2*np.ones(11), range(11))
+    N = np.power(2*np.ones(5), range(5))
     num_proc = [1, 2, 4, 8, 16, 20]
 
     # N = [1,2,4,8,16,32,64]
