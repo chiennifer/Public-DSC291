@@ -77,9 +77,9 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    N = [3, 5, 10, 100, 500, 1000]
-    num_proc = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    num_it = 5
+    N = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024]
+    num_proc = [1, 2, 4, 8, 16, 20]
+    num_it = 10
     fieldnames = ['size_arr', 'num_proc',
                   'time_avg', 'time_std',
                   'cpu_ut_avg', 'cpu_ut_std']
@@ -91,4 +91,6 @@ if __name__=="__main__":
                 stats = run(n, proc, num_it)
                 stats['size_arr'] = n
                 stats['num_proc'] = proc
+                print("DONE WITH N = " + str(n) + " and num_proc = " + str(proc))
                 writer.writerow(stats)
+    print("finished writing to the file, you can retrieve stats.csv now")
