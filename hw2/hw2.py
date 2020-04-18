@@ -100,6 +100,7 @@ if __name__=="__main__":
                 writer.writerow(stats)
                 all_cpu.append(cpu)
                 all_time.append(times)
+                print(n, num_proc)
     np.savez_compressed('raw_data', cpu = all_cpu, times = all_time)
     print('Finished')
 
