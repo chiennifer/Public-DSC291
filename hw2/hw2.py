@@ -77,7 +77,7 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    N = np.power(2*np.ones(11), range(11))
+    N = np.power(2*np.ones(10), range(10))
     num_proc = [1, 2, 4, 8, 16, 20]
     num_it = 10
     fieldnames = ['size_arr', 'num_proc',
