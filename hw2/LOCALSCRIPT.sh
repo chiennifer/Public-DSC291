@@ -1,11 +1,13 @@
 #!/bin/bash
 # -----------------------------------------------------------------------------------------------
 ### run this on your local terminal
-### for m5large the total time took approx (10:45, )
-### for m5xlarge the total time took approx (10:55, )
-### for m52xlarge the total time took approx (10:58, )
+### for m5large the total time took approx (10:00, )
+### for m5xlarge the total time took approx (9:54, )
+### for m52xlarge the total time took approx (9:57, )
 # -----------------------------------------------------------------------------------------------
-## aws-jupyter create -c 1 --name test2 --type m5.2xlarge
+## aws-jupyter create -c 1 --name testm5large --type m5.large # i-0912e62fb3d67190a
+## aws-jupyter create -c 1 --name testm5xlarge --type m5.xlarge # 
+## aws-jupyter create -c 1 --name test52xlarge --type m5.2xlarge # 
 # ./LOCALSCRIPT.sh
 
 # -----------------------------------------------------------------------------------------------
