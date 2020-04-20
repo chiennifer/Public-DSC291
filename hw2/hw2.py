@@ -77,7 +77,7 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    N = np.power(2*np.ones(10), range(10)) # , range(10))
+    N = np.power(2*np.ones(8), range(8))
     num_proc = [1, 2, 4, 8, 16, 20]
     num_it = 10
     fieldnames = ['size_arr', 'num_proc',
@@ -103,6 +103,7 @@ if __name__=="__main__":
                 writer.writerow(stats)
                 all_cpu.append(cpu)
                 all_time.append(times)
+                csvfile.flush()
     np.savez_compressed('raw_data', cpu = all_cpu, times = all_time)
     print("finished writing to the file, you can retrieve stats.csv now")
 
