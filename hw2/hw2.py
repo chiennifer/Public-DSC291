@@ -77,7 +77,7 @@ def run(N, num_proc, num_it = 1):
 
 
 if __name__=="__main__":
-    N = np.power(2*np.ones(10), range(10))
+    N = np.power(2*np.ones(10), range(10)) # , range(10))
     num_proc = [1, 2, 4, 8, 16, 20]
     num_it = 10
     fieldnames = ['size_arr', 'num_proc',
@@ -88,10 +88,15 @@ if __name__=="__main__":
     with open('stats.csv', 'w', newline='') as csvfile:
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        for n in N:
-            n = int(n)
-            for proc in num_proc:
-                stats, cpu, times = run(n, proc, num_it)
+
+    for n in N:
+        n = int(n)
+        for proc in num_proc:
+
+            stats, cpu, times = run(n, proc, num_it)
+
+            with open('stats.csv', 'a', newline='') as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
                 stats['size_arr'] = n
                 stats['num_proc'] = proc
                 print("DONE WITH N = " + str(n) + " and num_proc = " + str(proc))
