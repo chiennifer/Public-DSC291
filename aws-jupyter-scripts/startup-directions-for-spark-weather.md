@@ -3,7 +3,7 @@
 1. Start a cluster using `spark-notebook/run.py`
 2. When the cluster is up, start a jupyter notebook.
 3. From the jupyter console, start a terminal.
-4. go to the main working directory: `cd /mntls/workspace/`
+4. go to the main working directory: `cd /mnt/workspace/`
 5. `ls` should show one file: `FilesIO.ipynb`
 6. Clone your code directory (here we are cloning the main public repo):  
 `git clone https://github.com/yoavfreund/Public-DSC291.git`
