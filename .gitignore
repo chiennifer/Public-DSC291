@@ -1,2 +1,14 @@
+<<<<<<< HEAD
 __pycache__
 .ipynb_checkpoints
+=======
+config.yaml
+credentials.yaml
+*.pyc
+*.log
+.DS_Store
+.env/
+.cache/
+thirdparty/spark/ec2/lib
+nohup.out
+>>>>>>> b02a5ce57a377873dabd3d8db10f7f518f95d34a

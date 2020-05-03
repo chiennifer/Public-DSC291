@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% block body %}
+
+    <!-- {{ credential_file }} -->
+
+    {% if error %}<p class="error"><strong>Error:</strong> {{ error }}{% endif %}
+
+<div class="row-fluid">
+    <div class="span12">
+        <h4>Select an AWS account</h4>
+        <div id="aws-accounts">
+            {% if accounts|length == 0 %}
+                <p>No AWS accounts found.</p>
+            {% else %}
+                <p>Please select an AWS account to create cluster.</p>
+                <ul>
+                  {% for account in accounts %}
+                  <li><a href="/g/{{account}}">{{account}}</a></li>
+                  {% endfor %}
+                </ul>
+            {% endif %}
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#add-aws">
+                Add a new AWS account
+            </button>
+        </div>
+
+        <div class="modal fade" id="add-aws" tabindex="-1" role="dialog" aria-labelledby="add-aws-title">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="add-aws-title">Add a new AWS account</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-add-account" action="" method="POST">
+                            <label>Display Name</label>
+                            <input id="name" name="name" class="form-control"
+                                   placeholder="A name that will show in the dropdown menu above"
+                                   required>
+
+                            <label>Your Email Address</label>
+                            <input id="email_address" name="email_address" class="form-control"
+                                   placeholder="Enter your @eng.ucsd.edu email address"
+                                   required>
+
+                            <label>AWS Access Key ID
+                                [<a data-toggle="tooltip" title="AWS access key ids are 20 characters and usually start with AKI.">?</a>]
+                            </label>
+                            <input id="access_key_id" class="form-control"
+                                   name="access_key_id" required>
+
+                            <label>AWS Secret Access Key
+                                [<a data-toggle="tooltip" title="AWS secret access keys are 40 character random strings.">?</a>]
+                            </label>
+                            <input id="secret_access_key" class="form-control"
+                                   name="secret_access_key" required>
+
+                            <br/>
+                            <div id="myButtons" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary active">
+                                    <input id="ssh_key" type="radio" class="form-control"
+                                           name="ssh_key" value="generate" checked> Generate a New SSH Key
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input id="ssh_key" type="radio" class="form-control"
+                                           name="ssh_key" value="existing"> Use an Existing SSH Key
+                                </label>
+                            </div>
+                            <label>[<a data-toggle="tooltip" title="Select <b>Generate a New SSH Key</b> if you would like to generate and download a new SSH key.
+                            New SSH keys are saved to the same directory that you selected to save your credentials file to. Select <b>Use an Existing SSH Key</b>
+                            if you would like to use an SSH key (.pem file) that you already have downloaded and has been registered on AWS's servers. Select
+                            <b>Generate a New SSH Key</b> if you are unsure which option to select.">?</a>]</label>
+
+                            <br/>
+                            <div id="existing-key" style="display: none">
+                                <br/>
+                                <label>Key Name
+                                    [<a data-toggle="tooltip" title="The name of the key as defined on the on AWS's EC2 console.">?</a>]
+                                </label>
+                                <input id="key_name" class="form-control" name="key_name">
+
+                                <label>Key Identity File Path
+                                    [<a data-toggle="tooltip" title="Enter the full path of the key identity file, usually a .pem file, on your computer.">?</a>]
+                                </label>
+                                <input id="identity_file" class="form-control"
+                                       name="identity_file">
+                            </div>
+
+                            <button class="btn btn-primary btn-block" type="submit">Add</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" language="javascript">
+    $("input:radio[name=ssh_key]").change(function() {
+        var value = $(this).val();
+
+        if (value == "existing") {
+            $("#existing-key").css("display", "inline");
+            $("#key_name").attr("required", "true");
+            $("#identity_file").attr("required", "true");
+        } else {
+            $("#existing-key").css("display", "none");
+            $("#key_name").removeAttr("required");
+            $("#identity_file").removeAttr("required");
+        }
+    });
+    $('a[data-toggle="tooltip"]').tooltip({
+        animated: 'fade',
+        placement: 'bottom',
+        trigger: 'click',
+        html: true,
+    });
+</script>
+{% endblock %}
